@@ -96,12 +96,14 @@ if($xml){
            <th style="width:10px">#</th>
            <th>Código factura</th>
           <!-- <th>Cliente</th> -->
+           <th>test</th>
            <th>Vendedor</th>
            <th>Forma de pago</th>
            <th>Neto</th>
            <th>Total</th> 
            <th>Fecha</th>
-           <th>Acciones</th>
+           
+            <th>Acciones</th> 
 
          </tr> 
 
@@ -139,12 +141,30 @@ if($xml){
                   $respuestaCliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);
 
                   echo '<td>'.$respuestaCliente["nombre"].'</td>';*/
+                 
 
+                  $item = "id";
+                  $valor = $value["productos"]; // Aquí tienes el JSON
+                  $orden = "id";
+
+                  // Decodificar el JSON
+                  $productos = json_decode($valor, true);
+
+                  if (is_array($productos)) {
+                      // Acceder al campo "descripcion" del primer elemento
+                      $descripcion = $productos[0]['descripcion'];
+                      //var_dump($descripcion); 
+                       echo '<td>'.$productos[0]['descripcion'].'</td>';
+
+                  } else {
+                      echo "Error al decodificar el JSON.";
+                  }
+ 
                   $itemUsuario = "id";
                   $valorUsuario = $value["id_vendedor"];
-
+                  
                   $respuestaUsuario = ControladorUsuarios::ctrMostrarUsuarios($itemUsuario, $valorUsuario);
-
+                  
                   echo '<td>'.$respuestaUsuario["nombre"].'</td>
 
                   <td>'.$value["metodo_pago"].'</td>
@@ -157,7 +177,7 @@ if($xml){
 
                   <td>
 
-                    <div class="btn-group">
+                    <!-- <div class="btn-group">
 
                       <a class="btn btn-success" href="index.php?ruta=ventas&xml='.$value["codigo"].'">xml</a>
                         
@@ -165,14 +185,14 @@ if($xml){
 
                         <i class="fa fa-print"></i>
 
-                      </button>';
+                      </button> -->'; 
 
                       if($_SESSION["perfil"] == "Administrador"){
 
                       echo '<button class="btn btn-warning btnEditarVenta" idVenta="'.$value["id"].'"><i class="fa fa-pencil"></i></button>
 
                       <button class="btn btn-danger btnEliminarVenta" idVenta="'.$value["id"].'"><i class="fa fa-times"></i></button>';
-
+                  
                     }
 
                     echo '</div>  
@@ -181,6 +201,8 @@ if($xml){
 
                 </tr>';
             }
+            
+
 
         ?>
                

@@ -50,10 +50,10 @@
 
                     $vendedor = ControladorUsuarios::ctrMostrarUsuarios($itemUsuario, $valorUsuario);
 
-                    $itemCliente = "id";
+                   /* $itemCliente = "id";
                     $valorCliente = $venta["id_cliente"];
 
-                    $cliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);
+                    $cliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);*/
 
                     $porcentajeImpuesto = $venta["impuesto"] * 100 / $venta["neto"];
 
@@ -96,7 +96,7 @@
 
                 <!--=====================================
                 ENTRADA DEL CLIENTE
-                ======================================--> 
+                ======================================
 
                 <div class="form-group">
                   
@@ -129,7 +129,7 @@
                   
                   </div>
                 
-                </div>
+                </div> --> 
 
                 <!--=====================================
                 ENTRADA PARA AGREGAR PRODUCTO
@@ -148,7 +148,7 @@
                   $orden = "id";
 
                   $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);
-
+                 
                   $stockAntiguo = $respuesta["stock"] + $value["cantidad"];
                   
                   echo '<div class="row" style="padding:5px 15px">
