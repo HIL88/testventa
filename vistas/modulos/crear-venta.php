@@ -91,13 +91,12 @@ if($_SESSION["perfil"] == "Especial"){
 
                     if(!$ventas){
 
-                      echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="1" readonly>';
+                      echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="10001" readonly>';
                   
 
                     }else{
 
                       foreach ($ventas as $key => $value) {
-                        
                         
                       
                       }

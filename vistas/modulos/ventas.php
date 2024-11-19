@@ -94,7 +94,7 @@ if($xml){
          <tr>
            
            <th style="width:10px">#</th>
-           <th>Código factura</th>
+           <th>Código</th>
           <!-- <th>Cliente</th> -->
            <th>test</th>
            <th>Vendedor</th>
@@ -131,35 +131,47 @@ if($xml){
            
            echo '<tr>
 
-                  <td>'.($key+1).'</td>
+                    <td>'.($key+1).'</td>
 
-                  <td>'.$value["codigo"].'</td>';
+                    <td>'.$value["codigo"].'</td>';
 
-                 /* $itemCliente = "id";
-                  $valorCliente = $value["id_cliente"];
+                    /*$itemCliente = "id";
+                    $valorCliente = $value["id_cliente"];
 
-                  $respuestaCliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);
+                    $respuestaCliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);
 
-                  echo '<td>'.$respuestaCliente["nombre"].'</td>';*/
-                 
+                    echo '<td>'.$respuestaCliente["nombre"].'</td>';*/
+                  
 
-                  $item = "id";
-                  $valor = $value["productos"]; // Aquí tienes el JSON
-                  $orden = "id";
+                    $item = "id";
+                    $valor = $value["productos"]; // Aquí tienes el JSON
+                    $orden = "id";
 
-                  // Decodificar el JSON
-                  $productos = json_decode($valor, true);
-
-                  if (is_array($productos)) {
-                      // Acceder al campo "descripcion" del primer elemento
-                      $descripcion = $productos[0]['descripcion'];
-                      //var_dump($descripcion); 
-                       echo '<td>'.$productos[0]['descripcion'].'</td>';
-
-                  } else {
+                    // Decodificar el JSON
+                    $productos = json_decode($valor, true);
+                    
+                    if (is_array($productos)) {
+                      // Inicializamos una variable para almacenar las descripciones concatenadas
+                      $descripcion_completa = '';
+                  
+                      // Recorremos el arreglo de productos
+                      foreach ($productos as $index => $producto) {
+                          // Acceder al campo "descripcion" de cada producto
+                          $descripcion = $producto['descripcion'];
+                  
+                          // Concatenar la descripción y agregar una coma si no es el último elemento
+                          if ($index > 0) {
+                              $descripcion_completa .= ', '; // Agregar coma si no es el primer producto
+                          }
+                          $descripcion_completa .= $descripcion;
+                      }
+                  
+                      // Mostrar las descripciones concatenadas en una sola línea
+                      echo '<td>'. $descripcion_completa .'</td>';
+                    }else {
                       echo "Error al decodificar el JSON.";
-                  }
- 
+                      }
+
                   $itemUsuario = "id";
                   $valorUsuario = $value["id_vendedor"];
                   

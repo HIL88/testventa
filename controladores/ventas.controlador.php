@@ -115,6 +115,7 @@ class ControladorVentas{
 
 			$datos = array("id_vendedor"=>$_POST["idVendedor"],
 						  // "id_cliente"=>$_POST["seleccionarCliente"],
+						  "id_cliente"=>1,
 						   "codigo"=>$_POST["nuevaVenta"],
 						   "productos"=>$_POST["listaProductos"],
 						   "impuesto"=>$_POST["nuevoPrecioImpuesto"],
