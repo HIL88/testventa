@@ -96,7 +96,7 @@ if($xml){
            <th style="width:10px">#</th>
            <th>Código</th>
           <!-- <th>Cliente</th> -->
-           <th>test</th>
+           <th>Descripción</th>
            <th>Vendedor</th>
            <th>Forma de pago</th>
            <th>Neto</th>
@@ -158,6 +158,7 @@ if($xml){
                       foreach ($productos as $index => $producto) {
                           // Acceder al campo "descripcion" de cada producto
                           $descripcion = $producto['descripcion'];
+                          
                   
                           // Concatenar la descripción y agregar una coma si no es el último elemento
                           if ($index > 0) {
@@ -167,11 +168,13 @@ if($xml){
                       }
                   
                       // Mostrar las descripciones concatenadas en una sola línea
-                      echo '<td>'. $descripcion_completa .'</td>';
+                     echo '<td>'. $descripcion_completa .'</td>';
                     }else {
                       echo "Error al decodificar el JSON.";
                       }
 
+                  
+                    
                   $itemUsuario = "id";
                   $valorUsuario = $value["id_vendedor"];
                   
@@ -181,7 +184,9 @@ if($xml){
 
                   <td>'.$value["metodo_pago"].'</td>
 
-                  <td>$ '.number_format($value["neto"],2).'</td>
+                 <!-- <td>$ '.number_format($value["neto"],2).'</td> -->
+                 <td></td>
+                 
 
                   <td>$ '.number_format($value["total"],2).'</td>
 

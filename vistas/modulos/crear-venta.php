@@ -187,7 +187,7 @@ if($_SESSION["perfil"] == "Especial"){
                       <thead>
 
                         <tr>
-                          <th>Impuesto</th>
+                          <th></th>
                           <th>Total</th>      
                         </tr>
 
@@ -201,14 +201,15 @@ if($_SESSION["perfil"] == "Especial"){
                             
                             <div class="input-group">
                            
-                              <input type="number" class="form-control input-lg" min="0" id="nuevoImpuestoVenta" name="nuevoImpuestoVenta" placeholder="0" required>
+                            <input type="hidden" type="number" class="form-control input-lg" min="0" id="nuevoImpuestoVenta" name="nuevoImpuestoVenta" value="0" >  
 
-                               <input type="hidden" name="nuevoPrecioImpuesto" id="nuevoPrecioImpuesto" required>
+                                <!--  <input type="hidden" name="nuevoPrecioImpuesto" id="nuevoPrecioImpuesto" > -->
+                                  <input type="hidden" name="nuevoPrecioImpuesto" id="nuevoPrecioImpuesto" value="0">
 
-                               <input type="hidden" name="nuevoPrecioNeto" id="nuevoPrecioNeto" required>
+                              <input type="hidden" name="nuevoPrecioNeto" id="nuevoPrecioNeto" > 
 
-                              <span class="input-group-addon"><i class="fa fa-percent"></i></span>
-                        
+                               <!-- <span class="input-group-addon"><i class="fa fa-percent"></i></span> -->
+                      
                             </div>
 
                           </td>
@@ -219,7 +220,7 @@ if($_SESSION["perfil"] == "Especial"){
                            
                               <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
 
-                              <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" placeholder="00000" readonly required>
+                             <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" placeholder="00000" readonly required> 
 
                               <input type="hidden" name="totalVenta" id="totalVenta">
                               
