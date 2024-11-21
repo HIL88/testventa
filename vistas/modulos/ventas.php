@@ -99,8 +99,8 @@ if($xml){
            <th>Descripción</th>
            <th>Vendedor</th>
            <th>Forma de pago</th>
-           <th>Neto</th>
-           <th>Total</th> 
+           <th>Venta</th> 
+           <th>Ganancia</th>
            <th>Fecha</th>
            
             <th>Acciones</th> 
@@ -173,25 +173,57 @@ if($xml){
                       echo "Error al decodificar el JSON.";
                       }
 
-                  
+                    
                     
                   $itemUsuario = "id";
                   $valorUsuario = $value["id_vendedor"];
                   
                   $respuestaUsuario = ControladorUsuarios::ctrMostrarUsuarios($itemUsuario, $valorUsuario);
-                  
+                 // var_dump($respuestaUsuario);
                   echo '<td>'.$respuestaUsuario["nombre"].'</td>
 
                   <td>'.$value["metodo_pago"].'</td>
-
+              
                  <!-- <td>$ '.number_format($value["neto"],2).'</td> -->
-                 <td></td>
+                
+                  <td>$ '.number_format($value["total"],2).'</td>';
+                    
+                  //CALCULO PARA LA GANANCIA
                  
+                  $item = "id";
+                  $valor = $value["productos"]; // Aquí tienes el JSON
+                  $orden = "id";
+                  
+                  // Decodificar el JSON
+                  $productos = json_decode($valor, true);
+                  
+                  if (is_array($productos)) {
+                      // Inicializamos variables para almacenar las sumas
+                      $total_precio_compra = 0;
+                      $total_venta = 0;
 
-                  <td>$ '.number_format($value["total"],2).'</td>
+                      // Recorremos el arreglo de productos
+                      foreach ($productos as $producto) {
+                          // Multiplicar precio de compra por cantidad y sumarlo
+                          $total_precio_compra += $producto['precio_compra'] * $producto['cantidad'];
 
+                          // Multiplicar total de venta por cantidad y sumarlo
+                          $total_venta += $producto['total'];
+                      }
+
+                      // Calcular la diferencia (ganancia)
+                      $ganancia = $total_venta - $total_precio_compra;
+
+                      // Mostrar los resultados
+                     
+                      echo '<td>'. $ganancia . '</td>';
+                  } else {
+                      echo "Error al decodificar el JSON.";
+                  }
+
+                  echo '
                   <td>'.$value["fecha"].'</td>
-
+                       
                   <td>
 
                     <!-- <div class="btn-group">
@@ -203,6 +235,7 @@ if($xml){
                         <i class="fa fa-print"></i>
 
                       </button> -->'; 
+                      
 
                       if($_SESSION["perfil"] == "Administrador"){
 
@@ -211,6 +244,7 @@ if($xml){
                       <button class="btn btn-danger btnEliminarVenta" idVenta="'.$value["id"].'"><i class="fa fa-times"></i></button>';
                   
                     }
+                   
 
                     echo '</div>  
 
