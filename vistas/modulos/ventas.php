@@ -142,9 +142,12 @@ if($xml){
 
                     echo '<td>'.$respuestaCliente["nombre"].'</td>';*/
                   
-
+                    ////////////////////////////
+                    //DESCRIPCION DEL PRODUCTO//
+                    ////////////////////////////
+                  
                     $item = "id";
-                    $valor = $value["productos"]; // Aquí tienes el JSON
+                    $valor = $value["productos"];
                     $orden = "id";
 
                     // Decodificar el JSON
@@ -164,32 +167,32 @@ if($xml){
                           if ($index > 0) {
                               $descripcion_completa .= ', '; // Agregar coma si no es el primer producto
                           }
-                          $descripcion_completa .= $descripcion;
+                              $descripcion_completa .= $descripcion;
                       }
                   
                       // Mostrar las descripciones concatenadas en una sola línea
-                     echo '<td>'. $descripcion_completa .'</td>';
+                      echo '<td>'. $descripcion_completa .'</td>';
                     }else {
                       echo "Error al decodificar el JSON.";
                       }
-
-                    
-                    
+ 
                   $itemUsuario = "id";
                   $valorUsuario = $value["id_vendedor"];
                   
                   $respuestaUsuario = ControladorUsuarios::ctrMostrarUsuarios($itemUsuario, $valorUsuario);
-                 // var_dump($respuestaUsuario);
+                  // var_dump($respuestaUsuario);
                   echo '<td>'.$respuestaUsuario["nombre"].'</td>
 
                   <td>'.$value["metodo_pago"].'</td>
               
-                 <!-- <td>$ '.number_format($value["neto"],2).'</td> -->
+                  <!-- <td>$ '.number_format($value["neto"],2).'</td> -->
                 
                   <td>$ '.number_format($value["total"],2).'</td>';
                     
-                  //CALCULO PARA LA GANANCIA
-                 
+                  ////////////////////////////
+                  //CALCULO PARA LA GANANCIA//
+                  ///////////////////////////
+
                   $item = "id";
                   $valor = $value["productos"]; // Aquí tienes el JSON
                   $orden = "id";
@@ -214,14 +217,12 @@ if($xml){
                       // Calcular la diferencia (ganancia)
                       $ganancia = $total_venta - $total_precio_compra;
 
-                      // Mostrar los resultados
-                     
                       echo '<td>'. $ganancia . '</td>';
                   } else {
                       echo "Error al decodificar el JSON.";
                   }
 
-                  echo '
+                echo '
                   <td>'.$value["fecha"].'</td>
                        
                   <td>
@@ -235,8 +236,7 @@ if($xml){
                         <i class="fa fa-print"></i>
 
                       </button> -->'; 
-                      
-
+               
                       if($_SESSION["perfil"] == "Administrador"){
 
                       echo '<button class="btn btn-warning btnEditarVenta" idVenta="'.$value["id"].'"><i class="fa fa-pencil"></i></button>
@@ -244,16 +244,13 @@ if($xml){
                       <button class="btn btn-danger btnEliminarVenta" idVenta="'.$value["id"].'"><i class="fa fa-times"></i></button>';
                   
                     }
-                   
-
+               
                     echo '</div>  
 
                   </td>
 
                 </tr>';
             }
-            
-
 
         ?>
                
@@ -267,8 +264,7 @@ if($xml){
       $eliminarVenta -> ctrEliminarVenta();
 
       ?>
-       
-
+   
       </div>
 
     </div>

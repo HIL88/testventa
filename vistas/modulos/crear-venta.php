@@ -252,10 +252,10 @@ if($_SESSION["perfil"] == "Especial"){
                      <div class="input-group">
                   
                       <select class="form-control" id="nuevoMetodoPago" name="nuevoMetodoPago" required>
-                        <option value="">Seleccione método de pago</option>
+                        <option value="">Método de pago</option>
                         <option value="Efectivo">Efectivo</option>
-                        <option value="TC">Tarjeta Crédito</option>
-                        <option value="TD">Tarjeta Débito</option>                  
+                        <!-- <option value="TC">Tarjeta Crédito</option>
+                        <option value="TD">Tarjeta Débito</option>-->             
                       </select>    
 
                     </div>
