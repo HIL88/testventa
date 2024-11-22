@@ -45,7 +45,7 @@ class ControladorVentas{
 					  }).then(function(result){
 								if (result.value) {
 
-								window.location = "ventas";
+								window.location = "crear-venta";
 
 								}
 							})
@@ -226,7 +226,7 @@ class ControladorVentas{
 					  }).then(function(result){
 								if (result.value) {
 
-								window.location = "ventas";
+								window.location = "crear-venta";
 
 								}
 							})

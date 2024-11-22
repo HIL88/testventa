@@ -6,7 +6,7 @@
 
 		<?php
 
-		if($_SESSION["perfil"] == "Administrador"){
+		if($_SESSION["perfil"] == "Administrador"|| $_SESSION["perfil"] == "Especial"){
 
 			echo '<li class="active">
 
@@ -17,9 +17,11 @@
 
 				</a>
 
-			</li>
+			</li>';
+		}
+			if($_SESSION["perfil"] == "Administrador"){
 
-			<li>
+		echo'	<li>
 
 				<a href="usuarios">
 

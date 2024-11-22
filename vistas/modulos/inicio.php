@@ -26,7 +26,7 @@
       
     <?php
 
-    if($_SESSION["perfil"] =="Administrador"){
+    if($_SESSION["perfil"] =="Administrador"|| $_SESSION["perfil"] == "Especial"){
 
       include "inicio/cajas-superiores.php";
 
@@ -42,7 +42,7 @@
 
           <?php
 
-          if($_SESSION["perfil"] =="Administrador"){
+          if($_SESSION["perfil"] =="Administrador"|| $_SESSION["perfil"] == "Especial"){
           
            include "reportes/grafico-ventas.php";
 
@@ -84,13 +84,13 @@
            
           <?php
 
-          if($_SESSION["perfil"] =="Especial" || $_SESSION["perfil"] =="Vendedor"){
+          if($_SESSION["perfil"] =="Vendedor"){
 
              echo '<div class="box box-success">
 
              <div class="box-header">
 
-             <h1>Bienvenid@ ' .$_SESSION["nombre"].'</h1>
+             <h1>BIENVENIDO</h1>
 
              </div>
 
