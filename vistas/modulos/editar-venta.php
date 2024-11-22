@@ -337,7 +337,7 @@
 
                  <tr>
                   <th style="width: 10px">#</th>
-                  <th>Imagen</th>
+                  <!-- <th>Imagen</th>-->
                   <th>Código</th>
                   <th>Descripcion</th>
                   <th>Stock</th>

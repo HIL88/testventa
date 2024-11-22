@@ -56,7 +56,7 @@ if($_SESSION["perfil"] == "Vendedor"){
          <tr>
            
            <th style="width:10px">#</th>
-           <th>Imagen</th>
+          <!-- <th>Imagen</th>-->
            <th>Código</th>
            <th>Descripción</th>
            <th>Categoría</th>
@@ -253,19 +253,18 @@ MODAL AGREGAR PRODUCTO
 
             </div>
 
-            <!-- ENTRADA PARA SUBIR FOTO -->
+            <!-- ENTRADA PARA SUBIR FOTO  -->
 
              <div class="form-group">
-              
+             <!-- 
               <div class="panel">SUBIR IMAGEN</div>
 
               <input type="file" class="nuevaImagen" name="nuevaImagen">
 
-              <p class="help-block">Peso máximo de la imagen 2MB</p>
-
-              <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
-
-            </div>
+              <p class="help-block">Peso máximo de la imagen 2MB</p>-->
+              
+            </div> 
+            <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
 
           </div>
 
@@ -455,21 +454,22 @@ MODAL EDITAR PRODUCTO
 
             </div>
 
-            <!-- ENTRADA PARA SUBIR FOTO -->
+            <!-- ENTRADA PARA SUBIR FOTO  -->
 
              <div class="form-group">
               
-              <div class="panel">SUBIR IMAGEN</div>
+            <!--  <div class="panel">SUBIR IMAGEN</div>
 
               <input type="file" class="nuevaImagen" name="editarImagen">
 
               <p class="help-block">Peso máximo de la imagen 2MB</p>
 
-              <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
+            
+            </div> -->
+            <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail previsualizar" width="100px">
 
-              <input type="hidden" name="imagenActual" id="imagenActual">
+            <input type="hidden" name="imagenActual" id="imagenActual">
 
-            </div>
 
           </div>
 

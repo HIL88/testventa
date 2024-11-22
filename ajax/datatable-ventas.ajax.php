@@ -32,9 +32,9 @@ class TablaProductosVentas{
 
 		  	/*=============================================
  	 		TRAEMOS LA IMAGEN
-  			=============================================*/ 
-
-		  	$imagen = "<img src='".$productos[$i]["imagen"]."' width='40px'>";
+  			============================================= 
+			Se elimino del datosjson  "'.$imagen.'",
+		  	$imagen = "<img src='".$productos[$i]["imagen"]."' width='40px'>";*/
 
 		  	/*=============================================
  	 		STOCK
@@ -62,7 +62,6 @@ class TablaProductosVentas{
 
 		  	$datosJson .='[
 			      "'.($i+1).'",
-			      "'.$imagen.'",
 			      "'.$productos[$i]["codigo"].'",
 			      "'.$productos[$i]["descripcion"].'",
 			      "'.$stock.'",

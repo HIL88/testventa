@@ -34,9 +34,9 @@ class TablaProductos{
 		  for($i = 0; $i < count($productos); $i++){
 
 		  	/*=============================================
- 	 		TRAEMOS LA IMAGEN
-  			=============================================*/ 
-
+ 	 		TRAEMOS LA IMAGEN  
+  			============================================= 
+			sacado del datosJson "'.$imagen.'",
 		  	$imagen = "<img src='".$productos[$i]["imagen"]."' width='40px'>";
 
 		  	/*=============================================
@@ -82,8 +82,7 @@ class TablaProductos{
 
 		 
 		  	$datosJson .='[
-			      "'.($i+1).'",
-			      "'.$imagen.'",
+			      "'.($i+1).'", 
 			      "'.$productos[$i]["codigo"].'",
 			      "'.$productos[$i]["descripcion"].'",
 			      "'.$categorias["categoria"].'",
