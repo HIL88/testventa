@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION["perfil"] == "Vendedor"){
+/*if($_SESSION["perfil"] == "Vendedor"){
 
   echo '<script>
 
@@ -10,7 +10,7 @@ if($_SESSION["perfil"] == "Vendedor"){
 
   return;
 
-}
+}*/
 
 ?>
 <div class="content-wrapper">

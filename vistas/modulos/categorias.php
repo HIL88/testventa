@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION["perfil"] == "Vendedor"){
+/*if($_SESSION["perfil"] == "Vendedor"){
 
   echo '<script>
 
@@ -10,7 +10,7 @@ if($_SESSION["perfil"] == "Vendedor"){
 
   return;
 
-}
+}*/
 
 ?>
 
@@ -87,7 +87,7 @@ if($_SESSION["perfil"] == "Vendedor"){
                           
                         <button class="btn btn-warning btnEditarCategoria" idCategoria="'.$value["id"].'" data-toggle="modal" data-target="#modalEditarCategoria"><i class="fa fa-pencil"></i></button>';
 
-                        if($_SESSION["perfil"] == "Administrador"){
+                        if($_SESSION["perfil"] == "Administrador"|| $_SESSION["perfil"] == "Especial"){
 
                           echo '<button class="btn btn-danger btnEliminarCategoria" idCategoria="'.$value["id"].'"><i class="fa fa-times"></i></button>';
 

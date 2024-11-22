@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION["perfil"] == "Especial"){
+/*if($_SESSION["perfil"] == "Especial"){
 
   echo '<script>
 
@@ -10,7 +10,7 @@ if($_SESSION["perfil"] == "Especial"){
 
   return;
 
-}
+}*/
 
 $xml = ControladorVentas::ctrDescargarXML();
 
@@ -237,7 +237,7 @@ if($xml){
 
                       </button> -->'; 
                
-                      if($_SESSION["perfil"] == "Administrador"){
+                      if($_SESSION["perfil"] == "Administrador"|| $_SESSION["perfil"] == "Especial"){
 
                      // echo '<button class="btn btn-warning btnEditarVenta" idVenta="'.$value["id"].'"><i class="fa fa-pencil"></i></button>
 

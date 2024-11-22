@@ -32,7 +32,7 @@
 
 		}
 
-		if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Especial"){
+		if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Especial"|| $_SESSION["perfil"] == "Vendedor"){
 
 			echo '<li>
 
@@ -58,7 +58,7 @@
 
 		}
 
-		if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Vendedor"){
+		if($_SESSION["perfil"] == "Administrador"){
 
 			echo '<li>
 
@@ -73,7 +73,7 @@
 
 		}
 
-		if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Vendedor"){
+		if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Vendedor" || $_SESSION["perfil"] == "Especial"){
 
 			echo '<li class="treeview">
 
@@ -90,21 +90,23 @@
 					</span>
 
 				</a>
-
-				<ul class="treeview-menu">
 					
-					<li>
+				<ul class="treeview-menu">';
+					if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Especial"){	
+					echo '	<li>
 
-						<a href="ventas">
-							
-							<i class="fa fa-circle-o"></i>
-							<span>Administrar ventas</span>
+							<a href="ventas">
+								
+								<i class="fa fa-circle-o"></i>
+								<span>Administrar ventas</span>
 
-						</a>
+							</a>
 
-					</li>
-
-					<li>
+						</li>';
+					}
+				
+		if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Vendedor" || $_SESSION["perfil"] == "Especial"){	
+				echo'	<li>
 
 						<a href="crear-venta">
 							
@@ -114,7 +116,7 @@
 						</a>
 
 					</li>';
-
+		}
 					if($_SESSION["perfil"] == "Administrador"){
 
 					echo '<li>

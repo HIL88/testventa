@@ -1,6 +1,6 @@
 <?php
 
-if($_SESSION["perfil"] == "Especial"){
+/*if($_SESSION["perfil"] == "Especial"){
 
   echo '<script>
 
@@ -10,7 +10,7 @@ if($_SESSION["perfil"] == "Especial"){
 
   return;
 
-}
+}*/
 
 ?>
 
