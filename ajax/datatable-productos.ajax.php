@@ -14,6 +14,7 @@ class TablaProductos{
   	=============================================*/ 
 
 	public function mostrarTablaProductos(){
+		$perfil = isset($_GET["perfilOculto"]) ? $_GET["perfilOculto"] : "Usuario";
 
 		$item = null;
     	$valor = null;
@@ -80,18 +81,21 @@ class TablaProductos{
   			}
 
 		 
-		  	$datosJson .='[
-			      "'.($i+1).'", 
-			      "'.$productos[$i]["codigo"].'",
-			      "'.$productos[$i]["descripcion"].'",
-			      "'.$categorias["categoria"].'",
-			      "'.$stock.'",
-			      "'.$productos[$i]["precio_compra"].'",
-			      "'.$productos[$i]["precio_venta"].'",
-			      "'.$productos[$i]["fecha"].'",
-			      "'.$botones.'"
-			    ],';
-
+			  $datosJson .='[
+				"'.($i+1).'", 
+				"'.$productos[$i]["codigo"].'",
+				"'.$productos[$i]["descripcion"].'",
+				"'.$categorias["categoria"].'",
+				"'.$stock.'",';
+			
+			if ($perfil == "Administrador"|| $perfil == "Especial" ) {
+				$datosJson .= '"'.$productos[$i]["precio_compra"].'",';
+			}	
+			$datosJson .= '"'.$productos[$i]["precio_venta"].'",
+				"'.$productos[$i]["fecha"].'",
+				"'.$botones.'"
+			],';
+			
 		  }
 
 		  $datosJson = substr($datosJson, 0, -1);

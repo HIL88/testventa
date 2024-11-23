@@ -38,13 +38,13 @@
     <div class="box">
 
       <div class="box-header with-border">
-  
+      <?php if ($_SESSION["perfil"] == "Administrador"||$_SESSION["perfil"] == "Especial"): ?>
         <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarProducto">
           
           Agregar producto
 
         </button>
-
+        <?php endif; ?>
       </div>
 
       <div class="box-body">
@@ -61,10 +61,14 @@
            <th>Descripción</th>
            <th>Categoría</th>
            <th>Stock</th>
-           <th>Precio de compra</th>
+           <?php if ($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Especial"): ?>
+                    <th>Precio de compra</th>
+                <?php endif; ?>
            <th>Precio de venta</th>
            <th>Agregado</th>
-           <th>Acciones</th>
+           <?php if ($_SESSION["perfil"] == "Administrador"|| $_SESSION["perfil"] == "Especial"): ?>
+                    <th>Acciones</th>
+                <?php endif; ?>
            
          </tr> 
 
@@ -97,7 +101,7 @@ MODAL AGREGAR PRODUCTO
         <!--=====================================
         CABEZA DEL MODAL
         ======================================-->
-
+        
         <div class="modal-header" style="background:#3c8dbc; color:white">
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -105,6 +109,7 @@ MODAL AGREGAR PRODUCTO
           <h4 class="modal-title">Agregar producto</h4>
 
         </div>
+        
 
         <!--=====================================
         CUERPO DEL MODAL

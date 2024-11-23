@@ -185,9 +185,9 @@ if($xml){
 
                   <td>'.$value["metodo_pago"].'</td>
               
-                  <!-- <td>$ '.number_format($value["neto"],2).'</td> -->
+                  <!-- <td>Q '.number_format($value["neto"],2).'</td> -->
                 
-                  <td>$ '.number_format($value["total"],2).'</td>';
+                  <td>Q '.number_format($value["total"],2).'</td>';
                     
                   ////////////////////////////
                   //CALCULO PARA LA GANANCIA//
@@ -217,7 +217,7 @@ if($xml){
                       // Calcular la diferencia (ganancia)
                       $ganancia = $total_venta - $total_precio_compra;
 
-                      echo '<td>'. $ganancia . '</td>';
+                      echo '<td>Q '.number_format($ganancia,2)  . '</td>';
                   } else {
                       echo "Error al decodificar el JSON.";
                   }
