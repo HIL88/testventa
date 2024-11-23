@@ -33,7 +33,7 @@ class ControladorProductos{
 				VALIDAR IMAGEN
 				=============================================*/
 
-			   	$ruta = "vistas/img/productos/default/anonymous.png";
+			   	$ruta = "vistas/img/productos/default/black_sales_mod.png";
 
 			   	if(isset($_FILES["nuevaImagen"]["tmp_name"])&& !empty($_FILES["nuevaImagen"]["tmp_name"])){
 
@@ -192,7 +192,7 @@ class ControladorProductos{
 					PRIMERO PREGUNTAMOS SI EXISTE OTRA IMAGEN EN LA BD
 					=============================================*/
 
-					if(!empty($_POST["imagenActual"]) && $_POST["imagenActual"] != "vistas/img/productos/default/anonymous.png"){
+					if(!empty($_POST["imagenActual"]) && $_POST["imagenActual"] != "vistas/img/productos/default/black_sales_mod.png"){
 
 						unlink($_POST["imagenActual"]);
 
@@ -315,7 +315,7 @@ class ControladorProductos{
 			$tabla ="productos";
 			$datos = $_GET["idProducto"];
 
-			if($_GET["imagen"] != "" && $_GET["imagen"] != "vistas/img/productos/default/anonymous.png"){
+			if($_GET["imagen"] != "" && $_GET["imagen"] != "vistas/img/productos/default/black_sales_mod.png"){
 
 				unlink($_GET["imagen"]);
 				rmdir('vistas/img/productos/'.$_GET["codigo"]);

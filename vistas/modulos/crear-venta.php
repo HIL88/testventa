@@ -318,7 +318,7 @@
                <thead>
 
                  <tr>
-                  <th style="width: 10px">#</th>
+                  <th style="width: 20px">#</th>
                   <!-- <th>Imagen</th>-->
                   <th>Código</th>
                   <th>Descripcion</th>
