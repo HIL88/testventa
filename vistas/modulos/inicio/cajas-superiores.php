@@ -25,15 +25,15 @@ $totalProductos = count($productos);
     
     <div class="inner">
       
-      <h3>$<?php echo number_format($ventas["total"],2); ?></h3>
+      <h3>Q <?php echo number_format($ventas["total"],2); ?></h3>
 
       <p>Ventas</p>
     
     </div>
     
     <div class="icon">
-      
-      <i class="ion ion-social-usd"></i>
+    <!-- class= "ion ion-social-usd" -->
+      <i class="fa fa-money"></i>
     
     </div>
     

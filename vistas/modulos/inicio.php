@@ -56,7 +56,7 @@
 
           <?php
 
-          if($_SESSION["perfil"] =="Administrador"){
+          if($_SESSION["perfil"] =="Administrador"|| $_SESSION["perfil"] == "Especial"){
           
            include "reportes/productos-mas-vendidos.php";
 
@@ -70,7 +70,7 @@
 
           <?php
 
-          if($_SESSION["perfil"] =="Administrador"){
+          if($_SESSION["perfil"] =="Administrador"|| $_SESSION["perfil"] == "Especial"){
           
            include "inicio/productos-recientes.php";
 

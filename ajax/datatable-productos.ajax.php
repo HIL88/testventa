@@ -89,9 +89,9 @@ class TablaProductos{
 				"'.$stock.'",';
 			
 			if ($perfil == "Administrador"|| $perfil == "Especial" ) {
-				$datosJson .= '"'.$productos[$i]["precio_compra"].'",';
+				$datosJson .= '"'.'Q '.number_format($productos[$i]["precio_compra"],2).'",';
 			}	
-			$datosJson .= '"'.$productos[$i]["precio_venta"].'",
+			$datosJson .= '"'.'Q '.number_format($productos[$i]["precio_venta"],2).'",
 				"'.$productos[$i]["fecha"].'",
 				"'.$botones.'"
 			],';
