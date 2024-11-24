@@ -574,103 +574,93 @@ class ControladorVentas{
 	}
 
 	/*=============================================
-	DESCARGAR EXCEL
-	=============================================*/
+DESCARGAR EXCEL
+=============================================*/
 
-	public function ctrDescargarReporte(){
+public function ctrDescargarReporte() {
 
-		if(isset($_GET["reporte"])){
+    if (isset($_GET["reporte"])) {
 
-			$tabla = "ventas";
+        $tabla = "ventas";
 
-			if(isset($_GET["fechaInicial"]) && isset($_GET["fechaFinal"])){
+        if (isset($_GET["fechaInicial"]) && isset($_GET["fechaFinal"])) {
 
-				$ventas = ModeloVentas::mdlRangoFechasVentas($tabla, $_GET["fechaInicial"], $_GET["fechaFinal"]);
+            $ventas = ModeloVentas::mdlRangoFechasVentas($tabla, $_GET["fechaInicial"], $_GET["fechaFinal"]);
 
-			}else{
+        } else {
 
-				$item = null;
-				$valor = null;
+            $item = null;
+            $valor = null;
 
-				$ventas = ModeloVentas::mdlMostrarVentas($tabla, $item, $valor);
+            $ventas = ModeloVentas::mdlMostrarVentas($tabla, $item, $valor);
+        }
 
-			}
+        /*=============================================
+        CREAMOS EL ARCHIVO DE EXCEL
+        =============================================*/
 
+        $Name = $_GET["reporte"] . '.xls';
 
-			/*=============================================
-			CREAMOS EL ARCHIVO DE EXCEL
-			=============================================*/
+        header('Expires: 0');
+        header('Cache-control: private');
+        header("Content-type: application/vnd.ms-excel"); // Archivo de Excel
+        header("Cache-Control: cache, must-revalidate");
+        header('Content-Description: File Transfer');
+        header('Last-Modified: ' . date('D, d M Y H:i:s'));
+        header("Pragma: public");
+        header('Content-Disposition:; filename="' . $Name . '"');
+        header("Content-Transfer-Encoding: binary");
 
-			$Name = $_GET["reporte"].'.xls';
+        echo mb_convert_encoding("<table border='0'> 
 
-			header('Expires: 0');
-			header('Cache-control: private');
-			header("Content-type: application/vnd.ms-excel"); // Archivo de Excel
-			header("Cache-Control: cache, must-revalidate"); 
-			header('Content-Description: File Transfer');
-			header('Last-Modified: '.date('D, d M Y H:i:s'));
-			header("Pragma: public"); 
-			header('Content-Disposition:; filename="'.$Name.'"');
-			header("Content-Transfer-Encoding: binary");
-		
-			echo utf8_decode("<table border='0'> 
+                <tr> 
+                <td style='font-weight:bold; border:1px solid #eee;'>CÓDIGO</td> 
+                <td style='font-weight:bold; border:1px solid #eee;'>VENDEDOR</td>
+                <td style='font-weight:bold; border:1px solid #eee;'>CANTIDAD</td>
+                <td style='font-weight:bold; border:1px solid #eee;'>PRODUCTOS</td>
+                <td style='font-weight:bold; border:1px solid #eee;'>PRECIO COMPRA</td>       
+                <td style='font-weight:bold; border:1px solid #eee;'>TOTAL</td>        
+                <td style='font-weight:bold; border:1px solid #eee;'>FECHA</td>        
+                </tr>", 'ISO-8859-1', 'UTF-8');
 
-					<tr> 
-					<td style='font-weight:bold; border:1px solid #eee;'>CÓDIGO</td> 
-					<td style='font-weight:bold; border:1px solid #eee;'>CLIENTE</td>
-					<td style='font-weight:bold; border:1px solid #eee;'>VENDEDOR</td>
-					<td style='font-weight:bold; border:1px solid #eee;'>CANTIDAD</td>
-					<td style='font-weight:bold; border:1px solid #eee;'>PRODUCTOS</td>
-					<td style='font-weight:bold; border:1px solid #eee;'>IMPUESTO</td>
-					<td style='font-weight:bold; border:1px solid #eee;'>NETO</td>		
-					<td style='font-weight:bold; border:1px solid #eee;'>TOTAL</td>		
-					<td style='font-weight:bold; border:1px solid #eee;'>METODO DE PAGO</td	
-					<td style='font-weight:bold; border:1px solid #eee;'>FECHA</td>		
-					</tr>");
+        foreach ($ventas as $row => $item) {
 
-			foreach ($ventas as $row => $item){
+          //  $cliente = ControladorClientes::ctrMostrarClientes("id", $item["id_cliente"]);
+            $vendedor = ControladorUsuarios::ctrMostrarUsuarios("id", $item["id_vendedor"]);
+			//  <td style='border:1px solid #eee;'>" . $cliente["nombre"] . "</td>
+            echo mb_convert_encoding("<tr>
+                        <td style='border:1px solid #eee;'>" . $item["codigo"] . "</td> 
+                        <td style='border:1px solid #eee;'>" . $vendedor["nombre"] . "</td>
+                        <td style='border:1px solid #eee;'>", 'ISO-8859-1', 'UTF-8');
 
-				$cliente = ControladorClientes::ctrMostrarClientes("id", $item["id_cliente"]);
-				$vendedor = ControladorUsuarios::ctrMostrarUsuarios("id", $item["id_vendedor"]);
+            $productos = json_decode($item["productos"], true);
 
-			 echo utf8_decode("<tr>
-			 			<td style='border:1px solid #eee;'>".$item["codigo"]."</td> 
-			 			<td style='border:1px solid #eee;'>".$cliente["nombre"]."</td>
-			 			<td style='border:1px solid #eee;'>".$vendedor["nombre"]."</td>
-			 			<td style='border:1px solid #eee;'>");
+            foreach ($productos as $key => $valueProductos) {
 
-			 	$productos =  json_decode($item["productos"], true);
+                echo mb_convert_encoding($valueProductos["cantidad"] . "<br>", 'ISO-8859-1', 'UTF-8');
+            }
 
-			 	foreach ($productos as $key => $valueProductos) {
-			 			
-			 			echo utf8_decode($valueProductos["cantidad"]."<br>");
-			 		}
+            echo mb_convert_encoding("</td><td style='border:1px solid #eee;'>", 'ISO-8859-1', 'UTF-8');
 
-			 	echo utf8_decode("</td><td style='border:1px solid #eee;'>");	
+            foreach ($productos as $key => $valueProductos) {
 
-		 		foreach ($productos as $key => $valueProductos) {
-			 			
-		 			echo utf8_decode($valueProductos["descripcion"]."<br>");
-		 		
-		 		}
+                echo mb_convert_encoding($valueProductos["descripcion"] . "<br>", 'ISO-8859-1', 'UTF-8');
+            }
+			echo mb_convert_encoding("</td><td style='border:1px solid #eee;'>", 'ISO-8859-1', 'UTF-8');
+			foreach ($productos as $key => $valueProductos) {
 
-		 		echo utf8_decode("</td>
-					<td style='border:1px solid #eee;'>$ ".number_format($item["impuesto"],2)."</td>
-					<td style='border:1px solid #eee;'>$ ".number_format($item["neto"],2)."</td>	
-					<td style='border:1px solid #eee;'>$ ".number_format($item["total"],2)."</td>
-					<td style='border:1px solid #eee;'>".$item["metodo_pago"]."</td>
-					<td style='border:1px solid #eee;'>".substr($item["fecha"],0,10)."</td>		
-		 			</tr>");
+                echo mb_convert_encoding('Q '.$valueProductos["precio_compra"] . "<br>", 'ISO-8859-1', 'UTF-8');
+            }
 
+            echo mb_convert_encoding("</td> 
+                <td style='border:1px solid #eee;'>Q " . number_format($item["total"], 2) . "</td>
+                <td style='border:1px solid #eee;'>" . substr($item["fecha"], 0, 10) . "</td>       
+                </tr>", 'ISO-8859-1', 'UTF-8');
+        }
 
-			}
-
-
-			echo "</table>";
-
-		}
-
-	}
+        echo "</table>";
+    }
+}
 
 
 	/*=============================================

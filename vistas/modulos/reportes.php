@@ -82,9 +82,9 @@ if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
         }         
 
         ?>
-           <a href="https://proyectia.shinyapps.io/Prototipo-tabla-Prediccion-Eclat/">
+          <!-- <a href="https://proyectia.shinyapps.io/Prototipo-tabla-Prediccion-Eclat/">
             <button class="btn btn-info" style="margin-top:5px">Prediccion de ventas</button>
-          </a>
+          </a> -->
            <button class="btn btn-success" style="margin-top:5px">Descargar reporte en Excel</button>
           
           </a>
